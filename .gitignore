@@ -13,3 +13,17 @@ Homestead.json
 /_ide_helper.php
 /storage/*.key
 /storage/*.csv
+
+# Local dev environment & toolchain (not part of the repo)
+/.db
+/.tools
+
+# Build / dependency tooling artifacts
+/composer.phar
+/composer-setup.php
+composer.json.stage*.bak
+composer.lock.stage*.bak
+
+# Test & misc caches
+/.phpunit.result.cache
+/.rnd
