@@ -46,8 +46,8 @@
 
         editDetail() {
             this.edit = true;
-            this.x = this.$refs.detail ? (this.$refs.detail as HTMLElement).getBoundingClientRect().left - 20 : this.x;
-            this.y = this.$refs.detail ? (this.$refs.detail as HTMLElement).getBoundingClientRect().top - 20 : this.y;
+            this.x = this.$refs.detail ? ((this.$refs.detail as any).$el as HTMLElement).getBoundingClientRect().left - 20 : this.x;
+            this.y = this.$refs.detail ? ((this.$refs.detail as any).$el as HTMLElement).getBoundingClientRect().top - 20 : this.y;
         }
 
         saveDetail(detail) {

@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__Claude_Preview__preview_start",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -Command \"Get-NetTCPConnection -LocalPort 8000 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }\"",
+            "shell": "powershell",
+            "statusMessage": "Freeing port 8000..."
+          }
+        ]
+      }
+    ]
+  }
+}

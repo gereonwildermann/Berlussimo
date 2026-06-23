@@ -18,13 +18,13 @@
                                                           :position-y="y"
                                     ></app-house-add-dialog>
                                 </v-flex>
-                                <v-flex xs12 sm8>
+                                <v-flex xs12 sm7>
                                     <v-text-field prepend-icon="mdi-filter-variant"
                                                   label="Filter"
                                                   v-model="parameters.q"
                                     ></v-text-field>
                                 </v-flex>
-                                <v-flex xs12 sm2>
+                                <v-flex xs12 sm3>
                                     <v-select :disabled="typeof parameterList['v'] === 'undefined'"
                                               :items="parameterItems('v')"
                                               v-model="parameters.v"
@@ -273,8 +273,9 @@
 
         addHouse() {
             this.add = true;
-            this.x = this.$refs.identifier ? (this.$refs.identifier as HTMLElement).getBoundingClientRect().left - 20 : this.x;
-            this.y = this.$refs.identifier ? (this.$refs.identifier as HTMLElement).getBoundingClientRect().top - 20 : this.y;
+            const el = this.$refs.identifier ? (this.$refs.identifier as Vue).$el as HTMLElement : null;
+            this.x = el ? el.getBoundingClientRect().left - 20 : this.x;
+            this.y = el ? el.getBoundingClientRect().top - 20 : this.y;
         }
     }
 </script>

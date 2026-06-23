@@ -27,3 +27,6 @@ composer.lock.stage*.bak
 # Test & misc caches
 /.phpunit.result.cache
 /.rnd
+
+# Claude Code
+/.claude/settings.local.json

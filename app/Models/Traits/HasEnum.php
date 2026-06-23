@@ -12,7 +12,7 @@ trait HasEnum
         $instance = new static();
 
         // Pulls column string from DB
-        $enumStr = DB::select(DB::raw('SHOW COLUMNS FROM ' . $instance->getTable() . ' WHERE Field = "' . $column . '"'))[0]['Type'];
+        $enumStr = DB::select('SHOW COLUMNS FROM ' . $instance->getTable() . ' WHERE Field = "' . $column . '"')[0]['Type'];
 
         // Parse string
         preg_match_all("/'([^']+)'/", $enumStr, $matches);

@@ -1,18 +1,19 @@
-
 <script lang="ts">
-    import Vue from "../../imports";
-    import Component from "vue-class-component"
-
-    @Component({extends: Vue.component('v-select')})
-    export default class VSelect extends Vue {
-        inputValue;
-        selectedItems;
-
-        genSelectedItems(val) {
-            val = val || this.inputValue;
-            val = [undefined, null].includes(val) ? [] : val;
-            val = Array.isArray(val) ? val : [val];
-            this.selectedItems = val;
+    // Functional passthrough — avoids the timing issue of Vue.component('v-select')
+    // being undefined at class-decorator evaluation time.
+    // Preserves the original genSelectedItems normalization: single values become [value].
+    export default {
+        name: 'VSelect',
+        functional: true,
+        render(h, ctx) {
+            const data: any = { ...ctx.data };
+            if (data.props && data.props.value !== undefined) {
+                let val = data.props.value;
+                val = (val === undefined || val === null) ? [] : val;
+                val = Array.isArray(val) ? val : [val];
+                data.props = { ...data.props, value: val };
+            }
+            return h('v-select', data, ctx.children);
         }
-    }
+    };
 </script>

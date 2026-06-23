@@ -136,20 +136,20 @@
 
         editObject() {
             this.edit = true;
-            this.x = this.$refs.identifier ? (this.$refs.identifier as HTMLElement).getBoundingClientRect().left - 20 : this.x;
-            this.y = this.$refs.identifier ? (this.$refs.identifier as HTMLElement).getBoundingClientRect().top - 20 : this.y;
+            this.x = this.$refs.identifier ? ((this.$refs.identifier as any).$el as HTMLElement).getBoundingClientRect().left - 20 : this.x;
+            this.y = this.$refs.identifier ? ((this.$refs.identifier as any).$el as HTMLElement).getBoundingClientRect().top - 20 : this.y;
         }
 
         copyObject() {
             this.copy = true;
-            this.x = this.$refs.identifier ? (this.$refs.identifier as HTMLElement).getBoundingClientRect().left - 20 : this.x;
-            this.y = this.$refs.identifier ? (this.$refs.identifier as HTMLElement).getBoundingClientRect().top - 20 : this.y;
+            this.x = this.$refs.identifier ? ((this.$refs.identifier as any).$el as HTMLElement).getBoundingClientRect().left - 20 : this.x;
+            this.y = this.$refs.identifier ? ((this.$refs.identifier as any).$el as HTMLElement).getBoundingClientRect().top - 20 : this.y;
         }
 
         addDetail() {
             this.add = true;
-            this.x = this.$refs.identifier ? (this.$refs.identifier as HTMLElement).getBoundingClientRect().left - 20 : this.x;
-            this.y = this.$refs.identifier ? (this.$refs.identifier as HTMLElement).getBoundingClientRect().top - 20 : this.y;
+            this.x = this.$refs.identifier ? ((this.$refs.identifier as any).$el as HTMLElement).getBoundingClientRect().left - 20 : this.x;
+            this.y = this.$refs.identifier ? ((this.$refs.identifier as any).$el as HTMLElement).getBoundingClientRect().top - 20 : this.y;
         }
     }
 </script>

@@ -3,16 +3,9 @@
     import Component from "vue-class-component";
     import {Prop, Watch} from "vue-property-decorator";
 
-    @Component({extends: Vue.component('v-edit-dialog')})
+    @Component
     export default class VEditDialog extends Vue {
-        transition;
-        isActive;
-        lazy;
-        focus;
-        isSaving;
-        cancel;
-        save;
-        large;
+        isActive: boolean = false;
 
         @Prop({type: String, default: 'Speichern'})
         saveText;
@@ -34,6 +27,9 @@
 
         @Prop({type: Boolean})
         persistent;
+
+        @Prop({type: Boolean})
+        large;
 
         @Prop({default: null})
         returnValue;
@@ -89,11 +85,21 @@
             }, text)
         }
 
+        cancel() {
+            this.isActive = false;
+            this.$emit('show', false);
+        }
+
+        save(value?) {
+            this.isActive = false;
+            this.$emit('show', false);
+        }
+
         genActions() {
             return this.$createElement('div', {
                 'class': 'small-dialog__actions'
             }, [
-                this.genButton(this.cancel, this.cancelText),
+                this.genButton(() => this.cancel(), this.cancelText),
                 this.genButton(() => {
                     this.save(this.returnValue);
                     this.$emit('save', true);
@@ -109,29 +115,47 @@
         }
 
         render(h) {
-            return h('v-menu', {
-                props: {
-                    contentClass: 'small-dialog__content',
-                    transition: this.transition,
-                    origin: 'top right',
-                    right: true,
-                    value: this.isActive,
-                    closeOnClick: !this.persistent,
-                    closeOnContentClick: false,
-                    lazy: this.lazy,
-                    positionX: this.positionX,
-                    positionY: this.positionY
+            const content = this.isActive ? h('div', {
+                class: 'small-dialog__content',
+                style: {
+                    position: 'fixed',
+                    top: (this.positionY || 0) + 'px',
+                    left: (this.positionX || 0) + 'px',
+                    zIndex: 200,
                 },
                 on: {
-                    input: val => (this.isActive = val)
+                    keydown: this.onKeydown
                 }
             }, [
-                h('a', {
-                    slot: 'activator'
-                }, this.$slots.default),
                 this.genContent(),
                 this.large ? this.genActions() : null
-            ])
+            ]) : null;
+
+            const overlay = this.isActive && !this.persistent ? h('div', {
+                style: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 199 },
+                on: { click: () => this.cancel() }
+            }) : null;
+
+            return h('span', {}, [
+                this.$slots.default,
+                content,
+                overlay,
+            ]);
         }
     }
 </script>
+
+<style>
+    .small-dialog__content {
+        background: #424242;
+        border-radius: 4px;
+        padding: 8px 16px 16px;
+        min-width: 200px;
+    }
+    .small-dialog__actions {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 8px;
+        gap: 4px;
+    }
+</style>
