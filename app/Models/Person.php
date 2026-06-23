@@ -23,6 +23,8 @@ class Person extends Authenticatable implements AuditableContract
     use Searchable, DefaultOrder, SoftDeletes, Auditable, HasRoles, Notifiable, MergePersons, Mergeable, HasApiTokens;
 
 
+    protected $guard_name = 'web';
+
     protected $table = 'persons';
     protected $searchableFields = ['name', 'first_name'];
     protected $defaultOrder = ['name' => 'asc', 'first_name' => 'asc', 'birthday' => 'asc'];
