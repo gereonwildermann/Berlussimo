@@ -38,9 +38,7 @@ return [
         'primary_key' => 'id',
         'foreign_key' => 'person_id',
         'model' => App\Models\Person::class,
-        'resolver' => function () {
-            return Auth::check() ? Auth::user()->getAuthIdentifier() : null;
-        }
+        'resolver' => \App\Resolvers\AuditUserResolver::class,
     ],
 
     /*
