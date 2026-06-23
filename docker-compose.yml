@@ -14,37 +14,14 @@ services:
       - mysql-data:/var/lib/mysql
     restart: unless-stopped
 
-  laravel:
-    image: php:8.3-cli
-    container_name: berlussimo-laravel
-    working_dir: /app
-    command: >
-      sh -c "
-        apt-get update -q && apt-get install -y -q libzip-dev libpng-dev &&
-        docker-php-ext-install pdo pdo_mysql zip gd &&
-        php artisan serve --host=0.0.0.0 --port=8000
-      "
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
-    depends_on:
-      - mysql
-    environment:
-      DB_HOST: mysql
-    restart: unless-stopped
-
-  vite:
-    image: node:20-alpine
-    container_name: berlussimo-vite
-    working_dir: /app
-    command: sh -c "npm install && npm run dev -- --host"
-    ports:
-      - "5173:5173"
-    volumes:
-      - .:/app
-      - /app/node_modules
-    restart: unless-stopped
+# Laravel (php artisan serve --port=8000) and Vite (npm run dev) are run
+# locally — they need access to .env, vendor/, and node_modules/ and work
+# best with the host PHP/Node installation.
+#
+# To start the full dev stack:
+#   docker compose up -d        # MySQL in Docker
+#   php artisan serve           # Laravel on :8000
+#   npm run dev                 # Vite on :5173
 
 volumes:
   mysql-data:
