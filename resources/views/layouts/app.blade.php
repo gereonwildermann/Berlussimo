@@ -1,4 +1,4 @@
-@inject('locator', App\Services\PhoneLocator')
+@inject('locator', 'App\Services\PhoneLocator')
         <!DOCTYPE html>
 <html>
 <head>

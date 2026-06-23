@@ -28,6 +28,6 @@ class AuthServiceProvider extends ServiceProvider
         Auth::provider('berlussimo', function ($app, $config) {
             return new BerlussimoUserProvider($app['hash'], $config['model']);
         });
-        Passport::routes();
+
     }
 }
