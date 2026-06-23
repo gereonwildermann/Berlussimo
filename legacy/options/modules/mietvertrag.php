@@ -834,6 +834,7 @@ switch ($mietvertrag_raus) {
         $ma->mahnung_pdf_mehrere($mahnliste, $fristdatum, $geldkonto_id, $mahngebuehr);
         break;
 } // end switch
+if (!function_exists('objekt_auswahl_liste')) {
 function objekt_auswahl_liste($link)
 {
     if (request()->has('objekt_id')) {
@@ -860,7 +861,8 @@ function objekt_auswahl_liste($link)
         echo "<a class=\"objekt_auswahl_buchung\" href=\"$link&objekt_id=" . $objekte_arr [$i] ['OBJEKT_ID'] . "\">" . $objekte_arr [$i] ['OBJEKT_KURZNAME'] . "</a>&nbsp;";
         echo "</div>";
     }
-}
+} // end objekt_auswahl_liste
+} // end if (!function_exists)
 
 function leerstand_finden($objekt_id)
 {

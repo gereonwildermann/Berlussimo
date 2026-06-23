@@ -180,7 +180,7 @@ Route::group(['namespace' => 'Legacy', 'middleware' => ['auth'], 'as' => 'web::'
     });
 
     Route::group(['prefix' => 'assignments', 'as' => 'todo::'], function () {
-        Route::get('/', 'ToDoController@index')->name('index');
+        Route::get('/legacy', 'ToDoController@index')->name('index');
     });
 
     Route::group(['prefix' => 'baustellen', 'as' => 'construction::'], function () {
@@ -221,3 +221,4 @@ Route::group(['prefix' => 'broadcasting', 'middleware' => ['api']], function () 
 Route::group(['prefix' => 'storage', 'namespace' => 'Storage', 'middleware' => ['auth']], function () {
     Route::get('{path}', 'StorageController@asset')->where('path', '.+');
 });
+

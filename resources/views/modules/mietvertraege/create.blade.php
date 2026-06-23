@@ -130,7 +130,7 @@
             placeholder: '+Mieter',
             secondaryPlaceholder: 'Mieter eingeben',
             data: [
-                    @foreach(old('tenants') as $id => $tenant)
+                    @foreach(old('tenants', []) as $id => $tenant)
                 {
                     id: {{ $id }},
                     tag: '{!! $tenant !!}'
@@ -155,7 +155,7 @@
         }).on('chip.delete', function (e, chip) {
             $('#tenant_' + chip.id).remove();
         });
-        @foreach(old('tenants') as $id => $tenant)
+        @foreach(old('tenants', []) as $id => $tenant)
         $('<input>').attr({
             type: 'hidden',
             id: 'tenant_{{ $id }}',

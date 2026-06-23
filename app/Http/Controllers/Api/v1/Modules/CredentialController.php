@@ -8,6 +8,7 @@ use App\Models\Credential;
 use App\Models\Person;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CredentialController extends Controller
 {
@@ -32,7 +33,7 @@ class CredentialController extends Controller
         if ($request->has('password')) {
             if ($person->credential === null) {
                 $c = new Credential();
-                $c->api_token = str_random(60);
+                $c->api_token = Str::random(60);
             } else {
                 $c = $person->credential;
             }
