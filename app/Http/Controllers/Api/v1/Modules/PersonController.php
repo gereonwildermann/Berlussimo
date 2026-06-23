@@ -50,6 +50,12 @@ class PersonController extends Controller
         return response()->json($person);
     }
 
+    public function destroy(PersonenRequest $request, Person $person)
+    {
+        $person->delete();
+        return response()->json(['status' => 'ok']);
+    }
+
     public function merge(MergeRequest $request, Person $left, Person $right)
     {
         $this->dispatch(new MergePersons($request->only(['name', 'first_name', 'birthday', 'sex']), $left, $right));

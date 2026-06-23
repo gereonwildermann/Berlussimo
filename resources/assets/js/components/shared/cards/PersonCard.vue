@@ -31,6 +31,27 @@
                 </v-layout>
             </v-container>
         </v-card-text>
+        <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn flat color="error" @click="confirmDelete = true">
+                <v-icon left>delete</v-icon>
+                Löschen
+            </v-btn>
+        </v-card-actions>
+
+        <v-dialog v-model="confirmDelete" max-width="400">
+            <v-card>
+                <v-card-title class="headline">Person löschen?</v-card-title>
+                <v-card-text>
+                    Diese Person wird unwiderruflich gelöscht. Fortfahren?
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn flat @click="confirmDelete = false">Abbrechen</v-btn>
+                    <v-btn flat color="error" :loading="deleting" @click="deletePerson">Löschen</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
     </v-card>
 </template>
 
@@ -38,10 +59,27 @@
     import Vue from "vue";
     import Component from "vue-class-component";
     import {Prop} from "vue-property-decorator";
+    import axios from "../../../libraries/axios";
 
     @Component
     export default class PersonCard extends Vue {
         @Prop()
         value;
+
+        confirmDelete: boolean = false;
+        deleting: boolean = false;
+
+        deletePerson() {
+            this.deleting = true;
+            axios.delete('/api/v1/persons/' + this.value.id)
+                .then(() => {
+                    this.confirmDelete = false;
+                    this.deleting = false;
+                    this.$router.push({name: 'web.persons.index'});
+                })
+                .catch(() => {
+                    this.deleting = false;
+                });
+        }
     }
 </script>

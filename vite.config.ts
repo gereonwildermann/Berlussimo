@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
 import path from 'path';
+import vue from '@vitejs/plugin-vue2';
 
 export default defineConfig({
+    plugins: [vue()],
     server: {
         port: 5173,
         // Serve the already-compiled public assets for the mix() hot-reload path

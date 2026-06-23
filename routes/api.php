@@ -37,7 +37,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.v1.', 'namespace' => 'Api\v1', 'mid
         Route::get('/persons/{person}/notifications', 'PersonController@notifications')->name('persons.notifications.index');
         Route::get('/persons/{person}/notifications/mark_all_as_read', 'PersonController@notificationsMarkAllAsRead')->name('persons.notifications.mark_all_as_read');
         Route::get('/persons/{person}/roles', 'PersonController@roles')->name('persons.roles');
-        Route::resource('persons', 'PersonController', ['only' => ['update', 'store', 'show', 'index']]);
+        Route::resource('persons', 'PersonController', ['only' => ['update', 'store', 'show', 'index', 'destroy']]);
 
         Route::resource('persons.credential', 'CredentialController', ['only' => ['store', 'index']]);
 
