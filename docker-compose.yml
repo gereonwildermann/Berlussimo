@@ -78,7 +78,7 @@ services:
     # image-optimization deps (pngquant-bin etc.) that the Vite build does not
     # use and which fail inside containers. Vite/esbuild get their platform
     # binary via optional dependencies, so they still work.
-    command: sh -c "npm install --ignore-scripts --no-audit --no-fund && npm run build -- --watch"
+    command: sh -c "npm install --ignore-scripts --no-audit --no-fund --legacy-peer-deps && npm run build -- --watch"
     environment:
       CHOKIDAR_USEPOLLING: "true"
     volumes:
