@@ -1,5 +1,8 @@
 services:
 
+  # ---------------------------------------------------------------------------
+  # Database — MySQL 5.7 with a persistent named volume (data survives restarts)
+  # ---------------------------------------------------------------------------
   mysql:
     image: mysql:5.7
     container_name: berlussimo-mysql
@@ -12,16 +15,77 @@ services:
       MYSQL_PASSWORD: secret
     volumes:
       - mysql-data:/var/lib/mysql
+    healthcheck:
+      # The app waits for this to pass before booting, so the DB is guaranteed
+      # reachable on the first request.
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
     restart: unless-stopped
 
-# Laravel (php artisan serve --port=8000) and Vite (npm run dev) are run
-# locally — they need access to .env, vendor/, and node_modules/ and work
-# best with the host PHP/Node installation.
-#
-# To start the full dev stack:
-#   docker compose up -d        # MySQL in Docker
-#   php artisan serve           # Laravel on :8000
-#   npm run dev                 # Vite on :5173
+  # ---------------------------------------------------------------------------
+  # PHP-FPM — runs the Laravel 12 application (uses the existing vendor/)
+  # ---------------------------------------------------------------------------
+  app:
+    build:
+      context: ./docker/php
+    container_name: berlussimo-app
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    environment:
+      # Inside the Docker network the DB is reachable at the service name
+      # "mysql" (NOT 127.0.0.1). These override the values in .env because
+      # Laravel's immutable dotenv keeps real environment variables.
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: homestead
+      DB_USERNAME: homestead
+      DB_PASSWORD: secret
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Nginx — serves public/ and proxies PHP requests to php-fpm (host port 8000)
+  # ---------------------------------------------------------------------------
+  nginx:
+    image: nginx:alpine
+    container_name: berlussimo-nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - app
+    restart: unless-stopped
+
+  # ---------------------------------------------------------------------------
+  # Vite — rebuilds the frontend bundle on change into public/ (no HMR needed;
+  # nginx serves the freshly built assets). node_modules lives in its own
+  # volume so the Linux esbuild/vite binaries don't clash with the host's.
+  # ---------------------------------------------------------------------------
+  vite:
+    image: node:20
+    container_name: berlussimo-vite
+    working_dir: /var/www
+    # --ignore-scripts skips postinstall binary downloads of legacy
+    # image-optimization deps (pngquant-bin etc.) that the Vite build does not
+    # use and which fail inside containers. Vite/esbuild get their platform
+    # binary via optional dependencies, so they still work.
+    command: sh -c "npm install --ignore-scripts --no-audit --no-fund && npm run build -- --watch"
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - .:/var/www
+      - vite-node-modules:/var/www/node_modules
+    restart: unless-stopped
 
 volumes:
   mysql-data:
+  vite-node-modules:

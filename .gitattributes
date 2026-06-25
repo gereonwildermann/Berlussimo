@@ -1,3 +1,10 @@
 * text=auto
 *.css linguist-vendored
 *.scss linguist-vendored
+
+# Keep container scripts/configs as LF so they run correctly inside Linux images
+docker/php/entrypoint.sh   text eol=lf
+docker/php/php.ini         text eol=lf
+docker/php/Dockerfile      text eol=lf
+docker/nginx/*.conf        text eol=lf
+*.sh                       text eol=lf
