@@ -1,59 +1,30 @@
-<div class="row">
-    <div class='col-xs-12'>
-        <h3>Betriebskosten & Nebenkostenabrechnung</h3>
-        <div class="row">
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'profile']) ?>'>Profile</a>
-            </div>
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'assistent']) ?>'>Assistent</a>
-            </div>
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'profil_reset']) ?>'>Profil reset</a>
-            </div>
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'zusammenfassung']) ?>'>Zusammenfassung</a>
-            </div>
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'pdf_ausgabe']) ?>'>PDF-Ausgabe</a>
-            </div>
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'anpassung_bk_hk']) ?>'>BK/HK Anpassung</a>
-            </div>
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'energie']) ?>'>Energiewerte</a>
-            </div>
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'anpassung_bk_nk']) ?>'>NK-BK
-                    eingeben</a>
-            </div>
-            <div class='col-xs-4 col-sm-4 col-md-3 col-lg-2'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'form_profil_kopieren']) ?>'>Profile
-                    kopieren</a>
-            </div>
+<div class="b-tools-grid">
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-flash"></i> Betriebs- &amp; Nebenkostenabrechnung</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link b-tool-link--primary" href='<?php echo route('web::bk::legacy', ['option' => 'assistent']) ?>'>Assistent</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'profile']) ?>'>Profile</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'profil_reset']) ?>'>Profil reset</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'zusammenfassung']) ?>'>Zusammenfassung</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'pdf_ausgabe']) ?>'>PDF-Ausgabe</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'anpassung_bk_hk']) ?>'>BK/HK Anpassung</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'energie']) ?>'>Energiewerte</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'anpassung_bk_nk']) ?>'>NK-BK eingeben</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'form_profil_kopieren']) ?>'>Profile kopieren</a>
         </div>
     </div>
-    <div class='col-xs-12 col-md-6 col-lg-4'>
-        <h3>Wirtschaftseinheiten</h3>
-        <div class="row">
-            <div class='col-xs-6'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'wirtschaftseinheiten']) ?>'>Alle</a>
-            </div>
-            <div class='col-xs-6'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'wirtschaftseinheit_neu']) ?>'>Neu</a>
-            </div>
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-domain"></i> Wirtschaftseinheiten</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link b-tool-link--primary" href='<?php echo route('web::bk::legacy', ['option' => 'wirtschaftseinheit_neu']) ?>'>Neu</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'wirtschaftseinheiten']) ?>'>Alle</a>
         </div>
     </div>
-    <div class='col-xs-12 col-md-6 col-lg-4'>
-        <h3>Serienbriefe</h3>
-        <div class="row">
-            <div class='col-xs-6'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'serienbrief']) ?>'>Vorlagen</a>
-            </div>
-            <div class='col-xs-6'>
-                <a href='<?php echo route('web::bk::legacy', ['option' => 'serienbrief_vorlage_neu']) ?>'>Neue
-                    Vorlage</a>
-            </div>
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-email-multiple"></i> Serienbriefe</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link b-tool-link--primary" href='<?php echo route('web::bk::legacy', ['option' => 'serienbrief_vorlage_neu']) ?>'>Neue Vorlage</a>
+            <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'serienbrief']) ?>'>Vorlagen</a>
         </div>
     </div>
 </div>

@@ -1,75 +1,42 @@
-<div class="row">
-    <div class='col-xs-5'>
-        <h3>Mieter-Mandate</h3>
-        <div class="row">
-            <div class='col-xs-6 col-md-6 col-lg-2'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'mandat_mieter_neu']) ?>'>Neu</a>
-            </div>
-            <div class='col-xs-6 col-md-6 col-lg-2'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_mieter_kurz']) ?>'>Alle</a>
-            </div>
-            <div class='col-xs-12 col-md-6 col-lg-2'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_mieter']) ?>'>Einziehen</a>
-            </div>
-            <div class='col-xs-12 col-md-6 col-lg-2'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'ls_auto_buchen']) ?>'>Buchen</a>
-            </div>
+<div class="b-tools-grid">
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-account-cash"></i> Mieter-Mandate</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link b-tool-link--primary" href='<?php echo route('web::sepa::legacy', ['option' => 'mandat_mieter_neu']) ?>'>Neu</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_mieter_kurz']) ?>'>Alle</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_mieter']) ?>'>Einziehen</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'ls_auto_buchen']) ?>'>Buchen</a>
         </div>
     </div>
-    <div class='col-xs-5'>
-        <h3>Rechnungen-Mandate</h3>
-        <div class="row">
-            <div class='col-xs-12 col-md-4'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_rechnungen']) ?>'>Alle</a>
-            </div>
-            <div class='col-xs-12 col-md-4'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 're_zahlen']) ?>'>RE zahlen</a>
-            </div>
-            <div class='col-xs-12 col-md-4'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'ra_zahlen']) ?>'>RA zahlen</a>
-            </div>
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-receipt"></i> Rechnungen-Mandate</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_rechnungen']) ?>'>Alle</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 're_zahlen']) ?>'>RE zahlen</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'ra_zahlen']) ?>'>RA zahlen</a>
         </div>
     </div>
-    <div class='col-xs-2'>
-        <h3>Hausgeld-Mandate</h3>
-        <div class="row">
-            <div class='col-xs-12 col-md-4'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'mandat_hausgeld_neu']) ?>'>Neu</a>
-            </div>
-            <div class='col-xs-12 col-md-4'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_hausgeld_kurz']) ?>'>Alle</a>
-            </div>
-            <div class='col-xs-12 col-md-4'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_hausgeld']) ?>'>Einziehen</a>
-            </div>
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-home-currency-usd"></i> Hausgeld-Mandate</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link b-tool-link--primary" href='<?php echo route('web::sepa::legacy', ['option' => 'mandat_hausgeld_neu']) ?>'>Neu</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_hausgeld_kurz']) ?>'>Alle</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'mandate_hausgeld']) ?>'>Einziehen</a>
         </div>
     </div>
-    <div class='col-xs-6'>
-        <h3>Manuelle Überweisung</h3>
-        <div class="row">
-            <div class='col-xs-12 col-md-6'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'sammel_ue']) ?>'>Sammelüberweisung</a>
-            </div>
-            <div class='col-xs-12 col-md-6'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'sammel_ue_IBAN']) ?>'>Sammelüberweisung
-                    IBAN</a>
-            </div>
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-bank-transfer"></i> Manuelle Überweisung</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'sammel_ue']) ?>'>Sammelüberweisung</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'sammel_ue_IBAN']) ?>'>Sammelüberweisung IBAN</a>
         </div>
     </div>
-    <div class='col-xs-6'>
-        <h3>Übersicht</h3>
-        <div class="row">
-            <div class='col-xs-12 col-md-4'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'sammler_anzeigen']) ?>'>Aktueller
-                    Sammler</a>
-            </div>
-            <div class='col-xs-12 col-md-5'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'sepa_files']) ?>'>Archiv (Aktuelles
-                    Konto)</a>
-            </div>
-            <div class='col-xs-12 col-md-2'>
-                <a href='<?php echo route('web::sepa::legacy', ['option' => 'sepa_files_fremd']) ?>'>Archiv</a>
-            </div>
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-view-list"></i> Übersicht</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'sammler_anzeigen']) ?>'>Aktueller Sammler</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'sepa_files']) ?>'>Archiv (Aktuelles Konto)</a>
+            <a class="b-tool-link" href='<?php echo route('web::sepa::legacy', ['option' => 'sepa_files_fremd']) ?>'>Archiv</a>
         </div>
     </div>
 </div>

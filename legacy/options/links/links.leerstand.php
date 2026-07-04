@@ -1,32 +1,22 @@
-<div class="row">
-    <div class="col-xs-12 col-md-6 col-lg-2">
-        <h3>Leerstände</h3>
-        <div class="row">
-            <div class='col-xs-6 col-md-4'>
-                <a href='<?php echo route('web::leerstand::legacy', ['option' => 'objekt']) ?>'>Alle</a>
-            </div>
+<div class="b-tools-grid">
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-home-alert"></i> Leerstände</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link" href='<?php echo route('web::leerstand::legacy', ['option' => 'objekt']) ?>'>Alle</a>
         </div>
     </div>
-    <div class="col-xs-12 col-md-6 col-lg-2">
-        <h3>Vermietung</h3>
-        <div class="row">
-            <div class='col-xs-6 col-md-4'>
-                <a href='<?php echo route('web::leerstand::legacy', ['option' => 'vermietung']) ?>'>Alle</a>
-            </div>
-            <div class='col-xs-6 col-md-4'>
-                <a href='<?php echo route('web::leerstand::legacy', ['option' => 'vermietung_wedding']) ?>'>Favoriten</a>
-            </div>
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-home-search"></i> Vermietung</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link" href='<?php echo route('web::leerstand::legacy', ['option' => 'vermietung']) ?>'>Alle</a>
+            <a class="b-tool-link" href='<?php echo route('web::leerstand::legacy', ['option' => 'vermietung_wedding']) ?>'>Favoriten</a>
         </div>
     </div>
-    <div class="col-xs-12 col-md-6 col-lg-2">
-        <h3>Sanierung</h3>
-        <div class="row">
-            <div class='col-xs-6 col-md-4'>
-                <a href='<?php echo route('web::leerstand::legacy', ['option' => 'sanierung']) ?>'>Alle</a>
-            </div>
-            <div class='col-xs-6 col-md-4'>
-                <a href='<?php echo route('web::leerstand::legacy', ['option' => 'sanierung_wedding']) ?>'>Favoriten</a>
-            </div>
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-hammer-wrench"></i> Sanierung</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link" href='<?php echo route('web::leerstand::legacy', ['option' => 'sanierung']) ?>'>Alle</a>
+            <a class="b-tool-link" href='<?php echo route('web::leerstand::legacy', ['option' => 'sanierung_wedding']) ?>'>Favoriten</a>
         </div>
     </div>
 </div>

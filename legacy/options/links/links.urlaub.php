@@ -1,15 +1,10 @@
-<h3>Urlaub</h3>
-<div class="row">
-    <?php
-    echo "<div class='col-xs-4 col-md-3 col-lg-2'>";
-    echo "<a href='" . route('web::urlaub::legacy', ['option' => 'uebersicht']) . "'>Übersicht</a>";
-    echo "</div>";
-    echo "<div class='col-xs-4 col-md-3 col-lg-2'>";
-    echo "<a href='" . route('web::urlaub::legacy', ['option' => 'monatsansicht']) . "'>Monatsansicht</a>";
-    echo "</div>";
-    echo "<div class='col-xs-4 col-md-3 col-lg-2'>";
-    echo "<a href='" . route('web::urlaub::legacy', ['option' => 'urlaubsplan_jahr']) . "'>Urlaubsplan PDF</a>";
-    echo "</div>";
-    ?>
+<div class="b-tools-grid">
+    <div class="b-tools-group">
+        <div class="b-tools-group__header"><i class="mdi mdi-beach"></i> Urlaub</div>
+        <div class="b-tools-group__links">
+            <a class="b-tool-link" href='<?php echo route('web::urlaub::legacy', ['option' => 'uebersicht']) ?>'>Übersicht</a>
+            <a class="b-tool-link" href='<?php echo route('web::urlaub::legacy', ['option' => 'monatsansicht']) ?>'>Monatsansicht</a>
+            <a class="b-tool-link" href='<?php echo route('web::urlaub::legacy', ['option' => 'urlaubsplan_jahr']) ?>'>Urlaubsplan PDF</a>
+        </div>
+    </div>
 </div>
-    
