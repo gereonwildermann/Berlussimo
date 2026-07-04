@@ -43,6 +43,6 @@ class LegacyController extends Controller
 
     protected function renderView($view, $content, $headers)
     {
-        return response()->view($view, ['content' => $content, 'submenu' => $this->submenu])->header($headers);
+        return response()->view($view, ['content' => $content, 'submenu' => $this->submenu])->withHeaders($headers);
     }
 }
