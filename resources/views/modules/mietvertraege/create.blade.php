@@ -96,7 +96,7 @@
         var $unit_autocomplete = $('#unit-autocomplete');
         $unit_autocomplete.materialize_autocomplete({
             data: {
-                @php($now = date_create())
+                @php $now = date_create(); @endphp
                         @foreach($units as $unit)
                         @php
                             $end = date_create($unit['MIETVERTRAG_BIS']);
