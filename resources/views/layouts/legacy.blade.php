@@ -13,6 +13,98 @@
         .application--wrap {
             min-height: auto;
         }
+
+        /* --- Modern dark styling for legacy content forms --- */
+        .berlussimo-materialize .card-panel {
+            background: #262a2e;
+            border: 1px solid #363c42;
+            border-radius: 10px;
+            padding: 26px 30px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, .35);
+        }
+
+        .berlussimo-materialize .input-field {
+            margin-top: 1.4rem;
+            margin-bottom: 2.4rem;
+        }
+
+        .berlussimo-materialize .input-field > label {
+            color: #93a1a6;
+        }
+
+        .berlussimo-materialize .input-field > label.active {
+            color: #28b8b4;
+        }
+
+        .berlussimo-materialize .input-field input[type=text],
+        .berlussimo-materialize .input-field input[type=number],
+        .berlussimo-materialize .input-field input[type=date],
+        .berlussimo-materialize .input-field input:not([type]) {
+            color: #eceff1 !important;
+            border-bottom: 1px solid #3a4147 !important;
+            box-shadow: none !important;
+        }
+
+        .berlussimo-materialize .input-field input:focus:not([readonly]) {
+            border-bottom: 1px solid #28b8b4 !important;
+            box-shadow: 0 1px 0 0 #28b8b4 !important;
+        }
+
+        .berlussimo-materialize .input-field i.prefix {
+            color: #6b7a80;
+        }
+
+        .berlussimo-materialize .input-field i.prefix.active {
+            color: #28b8b4;
+        }
+
+        /* Validation messages: sit cleanly below the field instead of
+           overlapping/wrapping character-by-character. Empty ones collapse. */
+        .berlussimo-materialize .error-block {
+            display: block;
+            position: static;
+            width: 100%;
+            clear: both;
+            margin: 6px 0 0 3rem;
+            color: #ff6e6e;
+            font-size: .76rem;
+            line-height: 1.35;
+            white-space: normal;
+        }
+
+        .berlussimo-materialize .error-block:empty {
+            display: none;
+            margin: 0;
+        }
+
+        .berlussimo-materialize .btn,
+        .berlussimo-materialize button[type=submit],
+        .berlussimo-materialize .btn.waves-effect {
+            background-color: #28b8b4 !important;
+            color: #06312f !important;
+            font-weight: 700;
+            border-radius: 6px;
+        }
+
+        .berlussimo-materialize .btn i,
+        .berlussimo-materialize button[type=submit] i {
+            color: #06312f !important;
+        }
+
+        .berlussimo-materialize .btn:hover,
+        .berlussimo-materialize button[type=submit]:hover {
+            background-color: #34cbc6 !important;
+        }
+
+        .berlussimo-materialize .chips {
+            border-bottom: 1px solid #3a4147;
+            min-height: 2.6rem;
+        }
+
+        .berlussimo-materialize .chip {
+            background: #37474f;
+            color: #eceff1;
+        }
     </style>
 </head>
 
