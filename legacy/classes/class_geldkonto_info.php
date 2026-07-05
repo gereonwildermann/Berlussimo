@@ -101,7 +101,7 @@ FROM `GELD_KONTO_BUCHUNGEN` WHERE GELDKONTO_ID = '$geld_konto_id' && AKTUELL = '
         for ($b = 0; $b < count($zeitraum_arr); $b++) {
             $monat = $zeitraum_arr [$b] ['monat'];
             $jahr = $zeitraum_arr [$b] ['jahr'];
-            $kosten_gesamt = $kosten_gesamt + $this->kosten_monatlich($monat, $jahr, $geldkonto_id);
+            $kosten_gesamt = (float) $kosten_gesamt + (float) $this->kosten_monatlich($monat, $jahr, $geldkonto_id);
         }
         return $kosten_gesamt;
     }
@@ -127,7 +127,7 @@ FROM `GELD_KONTO_BUCHUNGEN` WHERE GELDKONTO_ID = '$geld_konto_id' && AKTUELL = '
         for ($b = 0; $b < count($zeitraum_arr); $b++) {
             $monat = $zeitraum_arr [$b] ['monat'];
             $jahr = $zeitraum_arr [$b] ['jahr'];
-            $kosten_gesamt = $kosten_gesamt + $this->mieten_monatlich($monat, $jahr, $geldkonto_id);
+            $kosten_gesamt = (float) $kosten_gesamt + (float) $this->mieten_monatlich($monat, $jahr, $geldkonto_id);
         }
         return $kosten_gesamt;
     }

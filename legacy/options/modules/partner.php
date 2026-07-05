@@ -108,7 +108,7 @@ switch ($option) {
         $partner = new partners ();
         $arr = $partner->partner_nach_umsatz();
         echo "<pre>";
-        $anz = count($arr);
+        $anz = is_array($arr) ? count($arr) : 0;
         if ($anz) {
             echo "<table class=\"sortable\">";
             echo "<tr><th>PARTNER</th><th>NETTO</th><th>BRUTTO</th></tr>";

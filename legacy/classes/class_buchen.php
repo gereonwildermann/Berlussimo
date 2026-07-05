@@ -50,7 +50,7 @@ class buchen
                 $z = 0;
                 // Aufruf von array_multisort() mit dem Array, das sortiert werden soll und den entsprechenden Flags
                 $records = array_sortByIndex($sortiert, 'BEZEICHNUNG');
-                $sortiert = $records;
+                $sortiert = is_array($records) ? $records : [];
                 unset ($records);
                 for ($i = 0; $i < count($sortiert); $i++) {
                     $z++;

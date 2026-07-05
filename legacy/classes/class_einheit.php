@@ -72,7 +72,7 @@ ORDER BY HAUS_STRASSE, HAUS_NUMMER, OBJEKT_KURZNAME, EINHEIT_LAGE";
                 }
             }
 
-            $emails_arr_u = array_values ( array_unique ( $emails_arr ) );
+            $emails_arr_u = is_array($emails_arr) ? array_values(array_unique($emails_arr)) : [];
             unset ( $email_arr );
             unset ( $emails_arr );
             return $emails_arr_u;

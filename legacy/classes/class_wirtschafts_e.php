@@ -40,7 +40,7 @@ class wirt_e
         echo "<option value=\"\">Bitte wählen</option>\n";
 
         $wirt_e_arr = $this->get_wirt_e_arr();
-        $anzahl = count($wirt_e_arr);
+        $anzahl = is_array($wirt_e_arr) ? count($wirt_e_arr) : 0;
         for ($a = 0; $a < $anzahl; $a++) {
             $w_id = $wirt_e_arr [$a] ['W_ID'];
             $w_name = $wirt_e_arr [$a] ['W_NAME'];

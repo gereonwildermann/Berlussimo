@@ -35,7 +35,7 @@ class stammdaten
         $o->objekt_informationen($objekt_id);
 
         $pdf_tab [5] ['BEZ'] = 'Anzahl Geldkonten';
-        $pdf_tab [5] ['TXT'] = count($o->geld_konten_arr);
+        $pdf_tab [5] ['TXT'] = is_array($o->geld_konten_arr) ? count($o->geld_konten_arr) : 0;
 
         $d = new detail ();
         $details_arr = $d->finde_alle_details_arr('Objekt', $objekt_id);

@@ -37,13 +37,13 @@ class statistik
             $this->vermietete_monat_jahr($jahr_monat, $objekt_id, $typ_lage);
             $this->gesamt = $this->vermietete + $this->leer;
             $this->gesamt_leer = $this->gesamt_leer + $this->leer;
-            $this->pro_v = $this->vermietete / ($this->gesamt / 100);
+            $this->pro_v = $this->gesamt != 0 ? $this->vermietete / ($this->gesamt / 100) : 0;
             $this->pro_v = sprintf("%01.2f", $this->pro_v);
-            $this->pro_l = $this->leer / ($this->gesamt / 100);
+            $this->pro_l = $this->gesamt != 0 ? $this->leer / ($this->gesamt / 100) : 0;
             $this->pro_l = sprintf("%01.2f", $this->pro_l);
             // echo "$monat $jahr ----> VERMIETET $this->vermietete ($this->pro_v %) LEER:$this->leer ($this->pro_l %) <br>";
         }
-        $this->durchschnitt_leer_jahr = $this->gesamt_leer / ($a_bis * $this->gesamt / 100);
+        $this->durchschnitt_leer_jahr = ($a_bis * $this->gesamt) != 0 ? $this->gesamt_leer / ($a_bis * $this->gesamt / 100) : 0;
         $this->durchschnitt_leer_jahr = sprintf("%01.2f", $this->durchschnitt_leer_jahr);
         echo "<b>DURCHSCHNITT LEERSTAND IM $this->objekt_name IM JAHR $jahr $this->durchschnitt_leer_jahr %</b>";
         $vermietet = 100 - $this->durchschnitt_leer_jahr;
@@ -832,7 +832,7 @@ ORDER BY EINHEIT_KURZNAME ASC");
         $this->form_lieferung_eingeben();
         $arr = $this->get_lieferungen_arr();
         // p($arr);
-        $anz = count($arr);
+        $anz = is_array($arr) ? count($arr) : 0;
         $gesamt = Array();
         echo "<table class=\"sortable\">";
         // echo "<thead><tr><th>BELEG</th><th>POS</th><th>ART_NR</th><th>PREIS</th><th>GELIEFERT</th><th>EINGEBAUT</th><th>REST</th><th>LIEF</th></tr></thead>";

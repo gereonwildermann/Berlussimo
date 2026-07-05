@@ -483,7 +483,7 @@ WHERE RECHNUNGEN.BELEG_NR = RECHNUNGEN_POSITIONEN.BELEG_NR && RECHNUNGEN.AKTUELL
             }
         }
 
-        $my_array = $kontierte_belege;
+        $my_array = is_array($kontierte_belege) ? $kontierte_belege : [];
         echo "<table class=rechnungen>\n";
         echo "<tr class=feldernamen><td>BNr</td><td>R-Datum</td><td>E-Datum</td><td>Fällig</td><td>Von</td><td>An</td><td width=80>Netto</td><td width=80>Brutto</td><td width=80>Skonto</td></tr>\n";
 
@@ -558,7 +558,7 @@ WHERE RECHNUNGEN.BELEG_NR = RECHNUNGEN_POSITIONEN.BELEG_NR && RECHNUNGEN.AKTUELL
             }
         }
 
-        $my_array = $unkontierte_belege;
+        $my_array = is_array($unkontierte_belege) ? $unkontierte_belege : [];
         $numrows = count($my_array);
         echo "<table class=rechnungen>\n";
         echo "<tr class=feldernamen><td>BNr</td><td>R-Datum</td><td>E-Datum</td><td>Fällig</td><td>Von</td><td>An</td><td width=80>Netto</td><td width=80>Brutto</td><td width=80>Skonto</td></tr>\n";

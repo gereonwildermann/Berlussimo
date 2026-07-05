@@ -967,7 +967,7 @@ ORDER BY LPAD(EINHEIT_KURZNAME, LENGTH(EINHEIT_KURZNAME), '1') ASC ";
     {
         $result = DB::select("SELECT HAUS_ID FROM HAUS WHERE HAUS_AKTUELL='1' && OBJEKT_ID='$objekt_id' ORDER BY HAUS_STRASSE, HAUS_NUMMER ASC;");
         $this->anzahl_haeuser = count($result);
-        $this->seiten_anzahl = ceil($this->anzahl_haeuser / $this->zeilen_pro_seite);
+        $this->seiten_anzahl = ceil($this->anzahl_haeuser / max(1, (int) $this->zeilen_pro_seite));
     }
 
     function get_qm_gesamt($objekt_id)

@@ -741,7 +741,7 @@ ORDER BY `NEW_ENDE` ASC
                         }
                         if ($a->daten_arr [$key] ['monate'] [$b] ['soll'] <= '0.00') {
                             $monat_name = monat2name($akt_monat);
-                            $soll_aus_mv = number_format($a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
+                            $soll_aus_mv = number_format((float) $a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
                             $pdf->ezText("01.$akt_monat.$key Soll aus Mietvertrag $monat_name $key", 9);
                             $pdf->ezSetDy(10);
                             $pdf->ezSetCmMargins(5.0, 2.5, 4.0, 4.5);
@@ -906,7 +906,7 @@ ORDER BY `NEW_ENDE` ASC
                         }
                         if ($a->daten_arr [$key] ['monate'] [$b] ['soll'] < '0.00') {
                             $monat_name = monat2name($akt_monat);
-                            $soll_aus_mv = number_format($a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
+                            $soll_aus_mv = number_format((float) $a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
                             $pdf->ezText("01.$akt_monat.$key Soll aus Mietvertrag $monat_name $key", 9);
                             $pdf->ezSetDy(10);
                             $pdf->ezSetCmMargins(5.0, 2.5, 4.0, 4.5);
@@ -1440,7 +1440,7 @@ ORDER BY `NEW_ENDE` ASC
                         }
                         if ($a->daten_arr [$key] ['monate'] [$b] ['soll'] <= '0.00') {
                             $monat_name = monat2name($akt_monat);
-                            $soll_aus_mv = number_format($a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
+                            $soll_aus_mv = number_format((float) $a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
                             $pdf->ezText("01.$akt_monat.$key Soll aus Mietvertrag $monat_name $key", 9);
                             $pdf->ezSetDy(10);
                             $pdf->ezSetCmMargins(4.0, 2.5, 4.0, 4.5);
@@ -1631,7 +1631,7 @@ ORDER BY `NEW_ENDE` ASC
                         }
                         if ($a->daten_arr [$key] ['monate'] [$b] ['soll'] < '0.00') {
                             $monat_name = monat2name($akt_monat);
-                            $soll_aus_mv = number_format($a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
+                            $soll_aus_mv = number_format((float) $a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
                             $pdf->ezText("01.$akt_monat.$key Soll aus Mietvertrag $monat_name $key", 9);
                             $pdf->ezSetDy(10);
                             $pdf->ezSetCmMargins(4.0, 2.5, 4.0, 4.5);
@@ -2099,7 +2099,7 @@ ORDER BY `NEW_ENDE` ASC
                         }
                         if ($a->daten_arr [$key] ['monate'] [$b] ['soll'] <= '0.00') {
                             $monat_name = monat2name($akt_monat);
-                            $soll_aus_mv = number_format($a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
+                            $soll_aus_mv = number_format((float) $a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
 
                             $pdf->ezText("01.$akt_monat.$key Soll aus Mietvertrag $monat_name $key", 9, array(
                                 'justification' => 'left'
@@ -2266,7 +2266,7 @@ ORDER BY `NEW_ENDE` ASC
                         }
                         if ($a->daten_arr [$key] ['monate'] [$b] ['soll'] < '0.00') {
                             $monat_name = monat2name($akt_monat);
-                            $soll_aus_mv = number_format($a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
+                            $soll_aus_mv = number_format((float) $a->daten_arr [$key] ['monate'] [$b] ['soll'], 2, ",", "");
                             $pdf->ezText("01.$akt_monat.$key Soll aus Mietvertrag $monat_name $key", 9);
                             $pdf->ezSetDy(10);
                             $pdf->ezSetMargins(140, 70, 50, 100);

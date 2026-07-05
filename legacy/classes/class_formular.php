@@ -96,8 +96,9 @@ class formular
     }
 
     /* Textbereichsfeld erstellen */
-    function text_bereich($beschreibung, $name, $wert, $cols, $rows, $id)
+    function text_bereich($beschreibung, $name, $wert, $cols, $rows, $id = null)
     {
+        $id = $id ?? $name;
         echo "<div class=\"input-field\">";
         echo "<textarea id=\"$id\" name=\"$name\" class=\"materialize-textarea\" cols=\"$cols\" rows=\"$rows\">$wert</textarea>\n";
         echo "<label for=\"$id\">$beschreibung</label>\n";

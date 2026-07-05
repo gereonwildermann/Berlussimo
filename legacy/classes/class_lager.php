@@ -67,7 +67,7 @@ class lager {
 		}
 		echo "<p class=\"objekt_auswahl\">";
 		$lager_arr = $this->lager_in_array ();
-		$anzahl_lager = count ( $lager_arr );
+		$anzahl_lager = is_array($lager_arr) ? count($lager_arr) : 0;
 
 		for($i = 0; $i <= $anzahl_lager; $i ++) {
 			echo "<a class=\"objekt_auswahl_buchung\" href=\"$link&lager_id=" . $lager_arr [$i] ['LAGER_ID'] . "\">" . $lager_arr [$i] ['LAGER_NAME'] . "</a>&nbsp;";

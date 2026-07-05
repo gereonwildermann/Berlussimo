@@ -1437,7 +1437,7 @@ class leerstand
     {
         $monat = sprintf('%02d', $monat);
 
-        $plot = new PHPlot ($w, $h, "/tmp/plot_sanierung.png");
+        $plot = new PHPlot ($w, $h, sys_get_temp_dir() . DIRECTORY_SEPARATOR . "plot_sanierung.png");
         $plot->SetImageBorderType('plain');
         $plot->SetPlotType('stackedbars');
         $plot->SetDataType('text-data');
@@ -1462,7 +1462,7 @@ class leerstand
         $vermietete = $this->array_intersect_recursive($arr, $arr_leer, 'EINHEIT_KURZNAME');
 
         $leer_akt_string = '';
-        $anz__L = count($leere);
+        $anz__L = is_array($leere) ? count($leere) : 0;
         if ($anz__L > 0) {
             for ($ee = 0; $ee < $anz__L; $ee++) {
                 $leer_akt_string .= $leere [$ee] . "\n";
@@ -1470,7 +1470,7 @@ class leerstand
         }
 
         $vermietet_akt_string = '';
-        $anz__V = count($vermietete);
+        $anz__V = is_array($vermietete) ? count($vermietete) : 0;
         if ($anz__V > 0) {
             for ($ee = 0; $ee < $anz__V; $ee++) {
                 $vermietet_akt_string .= $vermietete [$ee] . "\n";
@@ -1539,8 +1539,10 @@ class leerstand
 
     function array_intersect_recursive($arr_new, $arr_old, $field)
     {
-        $anz_new = count($arr_new);
-        $anz_old = count($arr_old);
+        $arr_new_tmp = [];
+        $arr_old_tmp = [];
+        $anz_new = is_array($arr_new) ? count($arr_new) : 0;
+        $anz_old = is_array($arr_old) ? count($arr_old) : 0;
 
         for ($a = 0; $a < $anz_new; $a++) {
             $arr_new_tmp [] = $arr_new [$a] [$field];
@@ -1566,7 +1568,7 @@ class leerstand
 
         $arr = $this->vermietungsliste_arr($objekt_id, $monate);
 
-        $anz = count($arr);
+        $anz = is_array($arr) ? count($arr) : 0;
         if ($anz > 0) {
 
             /* Filterwahl generieren */

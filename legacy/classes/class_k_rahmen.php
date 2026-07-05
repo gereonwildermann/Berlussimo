@@ -244,7 +244,7 @@ ORDER BY KONTO ASC");
     {
         $my_array = DB::select("SELECT * FROM KONTENRAHMEN_KONTOARTEN WHERE AKTUELL = '1'  ORDER BY KONTOART ASC");
 
-        $numrows = count(!$my_array);
+        $numrows = is_array($my_array) ? count($my_array) : 0;
         if ($numrows > 0) {
             echo "<div class='input-field'>";
             echo "<select name=\"$name\" id=\"$id\" size=\"1\" >\n";

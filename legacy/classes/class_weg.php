@@ -952,7 +952,7 @@ class weg
 
                 echo "</td></tr>";
                 // $g_qm += $e->einheit_qm;
-                $g_ant += nummer_komma2punkt($this->weg_anteile);
+                $g_ant = (float) $g_ant + (float) nummer_komma2punkt($this->weg_anteile);
                 unset ($this->eigentuemer_namen);
             }
             $g_ant_a = nummer_punkt2komma_t($g_ant);
@@ -3813,7 +3813,7 @@ ORDER BY HGA;");
     function get_last_eigentuemer_id($einheit_id)
     {
         $arr = $this->get_last_eigentuemer_arr($einheit_id);
-        $anz = count($arr);
+        $anz = is_array($arr) ? count($arr) : 0;
         if (!$anz) {
             // $this->eigentuemer_name[0]['Nachname'] = 'unbekannt';
             $this->eigentuemer_id = 'unbekannt';

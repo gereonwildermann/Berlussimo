@@ -3323,7 +3323,7 @@ DATEDIFF(IF(DATE_FORMAT(MIETVERTRAG_BIS, '%Y') = '$jahr', MIETVERTRAG_BIS, '$jah
         $f->erstelle_formular("Alle Wirtschaftseinheiten", NULL);
         $wirt = new wirt_e ();
         $wirt_einheiten_arr = $wirt->get_wirt_e_arr();
-        $anzahl = count($wirt_einheiten_arr);
+        $anzahl = is_array($wirt_einheiten_arr) ? count($wirt_einheiten_arr) : 0;
         echo "<table class=\"sortable striped\"><thead>";
         echo "<tr><th>WE</th><th>QM Gesamt</th><th>Gewerbe</th><th>Optionen</th></tr>";
         echo "</thead>";
