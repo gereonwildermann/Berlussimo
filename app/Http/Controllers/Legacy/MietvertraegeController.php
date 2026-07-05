@@ -7,6 +7,7 @@ use App\Http\Requests\Legacy\MietvertraegeRequest;
 use App\Http\Requests\Modules\Mietvertraege\StoreMietvertraegeRequest;
 use App\Models\Person;
 use DB;
+use Illuminate\Support\Facades\Schema;
 use kautionen;
 use mietvertraege;
 
@@ -34,7 +35,12 @@ class MietvertraegeController extends LegacyController
           HAVING (MIETVERTRAG_BIS != '0000-00-00' OR MIETVERTRAG_BIS IS NULL)
         ");
         $personen = Person::all(['id', 'name', 'first_name']);
-        return view('modules.mietvertraege.create', ['units' => $units, 'tenants' => $personen]);
+        return view('modules.mietvertraege.create', [
+            'units' => $units,
+            'tenants' => $personen,
+            'submenu' => $this->submenu,
+            'content' => ''
+        ]);
     }
 
     public function store(StoreMietvertraegeRequest $request)
@@ -56,9 +62,14 @@ class MietvertraegeController extends LegacyController
             $mv_info->mieten_speichern($contract_id, request()->input('move-in-date'), request()->input('move-out-date'), 'Heizkosten Vorauszahlung', request()->input('hk-advance'), 0);
         }
 
-        if (request()->has('deposit')) {
+        if (request()->filled('deposit') && (Schema::hasTable('KAUTION_DATEN') || Schema::hasTable('kaution_daten'))) {
             $k = new kautionen ();
             $k->feld_wert_speichern($contract_id, 'SOLL', request()->input('deposit'));
+        } elseif (request()->filled('deposit')) {
+            logger()->warning('Skipping deposit save because KAUTION_DATEN table is missing.', [
+                'contract_id' => $contract_id,
+                'unit_id' => request()->input('unit'),
+            ]);
         }
 
         return redirect(route('web::uebersicht::legacy', ['anzeigen' => 'einheit', 'einheit_id' => request()->input('unit')], false));

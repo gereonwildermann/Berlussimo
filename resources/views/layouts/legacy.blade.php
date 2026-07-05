@@ -156,10 +156,15 @@
     </v-app>
 </div>
 
+<script type='text/javascript' src='/js/jquery.min.js'></script>
 <script type='text/javascript' src='{{mix('js/manifest.js')}}'></script>
 <script type='text/javascript' src='{{mix('js/vendor.js')}}'></script>
 <script type='text/javascript' src='{{mix('js/app-materialize.js')}}'></script>
+{{-- jQuery must be global before materialize.js and the form plugins below --}}
+<script type='text/javascript' src='/js/jquery.min.js'></script>
 <script type='text/javascript' src='{{mix('js/materialize.js')}}'></script>
+<script type='text/javascript' src='/js/materialize_autocomplete.js'></script>
+<script type='text/javascript' src='/js/materialize_chips_autocomplete.js'></script>
 <script type='text/javascript' src='{{mix('js/legacy.js')}}'></script>
 @stack('scripts')
 

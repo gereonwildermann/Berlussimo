@@ -2812,7 +2812,7 @@ WHERE DETAIL_NAME = 'Einzugsermächtigung' && DETAIL_INHALT='NEIN' && DETAIL_ZUO
         if (!request()->has('send_ja') && !request()->has('send_nein')) {
             $this->get_mietvertrag_infos_aktuell($mv_id);
             $f = new formular ();
-            $f->fieldset('Mietvertrag löschen', 'mvl');
+            $f->erstelle_formular('mvl', null, 'Mietvertrag löschen');
             echo "<div>";
             echo "<br><b>Sind Sie sicher, dass Sie den Mietvertrag $mv_id für die Einheit $this->einheit_kurzname löschen wollen?</b><br>";
             echo "<br>Einheit: $this->einheit_kurzname";
@@ -2824,7 +2824,7 @@ WHERE DETAIL_NAME = 'Einzugsermächtigung' && DETAIL_INHALT='NEIN' && DETAIL_ZUO
             $f->send_button('send_ja', 'Mietvertrag löschen');
             $f->send_button('send_nein', 'Abbrechen und zurück');
             echo "</div>";
-            $f->fieldset_ende();
+            $f->ende_formular();
         }
         if (request()->has('send_nein')) {
             weiterleiten(route('web::mietvertraege::legacy', ['mietvertrag_raus' => 'mietvertrag_kurz'], false));

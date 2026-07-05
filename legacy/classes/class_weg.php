@@ -445,6 +445,9 @@ class weg
     function get_last_eigentuemer($einheit_id)
     {
         $arr = $this->get_last_eigentuemer_arr($einheit_id);
+        if (!is_array($arr)) {
+            $arr = [];
+        }
         $anz = count($arr);
         if (!$anz) {
         } else {

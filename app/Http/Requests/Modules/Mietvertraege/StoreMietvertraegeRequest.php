@@ -15,15 +15,23 @@ class StoreMietvertraegeRequest extends MietvertraegeRequest
         $v = Validator::make($this->all(), ['unit' => 'required|integer']);
         if ($v->valid()) {
             $units = DB::select(
-                "SELECT EINHEIT.EINHEIT_ID, TYP, EINHEIT_KURZNAME, 
-                  IF(MIN(MIETVERTRAG_BIS) = '0000-00-00', '9999-12-31', MAX(MIETVERTRAG_BIS)) AS MIETVERTRAG_BIS 
-                FROM MIETVERTRAG RIGHT JOIN EINHEIT ON (EINHEIT.EINHEIT_ID = MIETVERTRAG.EINHEIT_ID) 
-                WHERE MIETVERTRAG_AKTUELL = '1' AND EINHEIT_AKTUELL = '1' 
-                  AND EINHEIT.EINHEIT_ID = ? GROUP BY EINHEIT.EINHEIT_ID",
+                                "SELECT EINHEIT.EINHEIT_ID,
+                                    IF(MIN(MIETVERTRAG_BIS) = '0000-00-00', MIN(MIETVERTRAG_BIS), MAX(MIETVERTRAG_BIS)) AS MIETVERTRAG_BIS
+                                FROM MIETVERTRAG
+                                    RIGHT JOIN EINHEIT ON (EINHEIT.EINHEIT_ID = MIETVERTRAG.EINHEIT_ID AND MIETVERTRAG_AKTUELL = '1')
+                                    LEFT JOIN DETAIL ON (EINHEIT.EINHEIT_ID = DETAIL.DETAIL_ZUORDNUNG_ID AND DETAIL_ZUORDNUNG_TABELLE = 'Einheit' AND DETAIL_NAME = 'Fertigstellung in Prozent' AND DETAIL_AKTUELL = '1')
+                                WHERE EINHEIT_AKTUELL = '1'
+					AND (DETAIL_INHALT > 99 OR DETAIL_INHALT IS NULL)
+                                    AND EINHEIT.EINHEIT_ID = ?
+                                GROUP BY EINHEIT.EINHEIT_ID
+                                HAVING (MIETVERTRAG_BIS != '0000-00-00' OR MIETVERTRAG_BIS IS NULL)",
                 [$this->get('unit')]
             );
             if (!empty($units)) {
-                $move_in_date_rule .= '|after:' . $units[0]['MIETVERTRAG_BIS'];
+                                $unit = (array) $units[0];
+                                if (!empty($unit['MIETVERTRAG_BIS'])) {
+                                        $move_in_date_rule .= '|after:' . $unit['MIETVERTRAG_BIS'];
+                                }
             }
         }
 
