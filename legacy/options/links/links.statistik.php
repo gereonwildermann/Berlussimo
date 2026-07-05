@@ -1,6 +1,6 @@
 <div class="b-tools-grid">
     <div class="b-tools-group">
-        <div class="b-tools-group__header"><i class="mdi mdi-hammer"></i> Bau</div>
+        <div class="b-tools-group__header"><i class="mdi mdi-wrench"></i> Bau</div>
         <div class="b-tools-group__links">
             <a class="b-tool-link" href='<?php echo route('web::statistik::legacy', ['option' => 'bau_stat_menu']) ?>'>Einheit</a>
             <a class="b-tool-link" href='<?php echo route('web::statistik::legacy', ['option' => 'baustelle']) ?>'>Baustellen</a>
@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="b-tools-group">
-        <div class="b-tools-group__header"><i class="mdi mdi-home-city"></i> Vermietung</div>
+        <div class="b-tools-group__header"><i class="mdi mdi-city"></i> Vermietung</div>
         <div class="b-tools-group__links">
             <a class="b-tool-link" href='<?php echo route('web::statistik::legacy', ['option' => 'leer_vermietet_jahr']) ?>'>Leerstand</a>
             <a class="b-tool-link" href='<?php echo route('web::statistik::legacy', ['option' => 'stellplaetze']) ?>'>Stellplätze (E)</a>

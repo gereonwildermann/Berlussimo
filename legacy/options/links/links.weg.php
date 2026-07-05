@@ -11,7 +11,7 @@ if (!session()->has('objekt_id')) {
 ?>
 <div class="b-tools-grid">
     <div class="b-tools-group">
-        <div class="b-tools-group__header"><i class="mdi mdi-home-group"></i> <?php echo $wegHeader ?></div>
+        <div class="b-tools-group__header"><i class="mdi mdi-home-modern"></i> <?php echo $wegHeader ?></div>
         <div class="b-tools-group__links">
             <a class="b-tool-link" href='<?php echo route('web::weg::legacy') ?>'>E-Mail</a>
             <a class="b-tool-link" href='<?php echo route('web::weg::legacy', ['option' => 'stammdaten_weg', 'lang' => 'en']) ?>'>Stammdaten</a>
@@ -23,7 +23,7 @@ if (!session()->has('objekt_id')) {
         </div>
     </div>
     <div class="b-tools-group">
-        <div class="b-tools-group__header"><i class="mdi mdi-cash-register"></i> Buchen</div>
+        <div class="b-tools-group__header"><i class="mdi mdi-cash-multiple"></i> Buchen</div>
         <div class="b-tools-group__links">
             <a class="b-tool-link" href='<?php echo route('web::weg::legacy', ['option' => 'wohngeld_buchen_auswahl_e']) ?>'>Hausgeld</a>
             <a class="b-tool-link" href='<?php echo route('web::buchen::legacy', ['option' => 'zahlbetrag_buchen']) ?>'>Kosten</a>

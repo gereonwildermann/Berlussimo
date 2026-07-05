@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="b-tools-group">
-        <div class="b-tools-group__header"><i class="mdi mdi-email-multiple"></i> Serienbriefe</div>
+        <div class="b-tools-group__header"><i class="mdi mdi-email"></i> Serienbriefe</div>
         <div class="b-tools-group__links">
             <a class="b-tool-link b-tool-link--primary" href='<?php echo route('web::bk::legacy', ['option' => 'serienbrief_vorlage_neu']) ?>'>Neue Vorlage</a>
             <a class="b-tool-link" href='<?php echo route('web::bk::legacy', ['option' => 'serienbrief']) ?>'>Vorlagen</a>

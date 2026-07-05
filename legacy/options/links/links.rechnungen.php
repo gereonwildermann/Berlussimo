@@ -43,7 +43,7 @@
         </div>
     </div>
     <div class="b-tools-group">
-        <div class="b-tools-group__header"><i class="mdi mdi-tag-text"></i> Angebote</div>
+        <div class="b-tools-group__header"><i class="mdi mdi-tag-text-outline"></i> Angebote</div>
         <div class="b-tools-group__links">
             <a class="b-tool-link b-tool-link--primary" href='<?php echo route('web::rechnungen::legacy', ['option' => 'angebot_erfassen']) ?>'>Erfassen</a>
             <a class="b-tool-link" href='<?php echo route('web::rechnungen::legacy', ['option' => 'meine_angebote']) ?>'>Alle</a>

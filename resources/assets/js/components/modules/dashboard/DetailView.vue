@@ -1,5 +1,64 @@
 <template>
-    <div></div>
+    <v-container fluid class="b-dashboard">
+        <div class="b-dashboard__grid">
+            <router-link class="b-dash-card" :to="{name: 'web.objects.index'}">
+                <div class="b-dash-card__icon"><i class="mdi mdi-city"></i></div>
+                <div class="b-dash-card__label">Objekte</div>
+            </router-link>
+            <router-link class="b-dash-card" :to="{name: 'web.houses.index'}">
+                <div class="b-dash-card__icon"><i class="mdi mdi-home-modern"></i></div>
+                <div class="b-dash-card__label">Häuser</div>
+            </router-link>
+            <router-link class="b-dash-card" :to="{name: 'web.units.index'}">
+                <div class="b-dash-card__icon"><i class="mdi mdi-floor-plan"></i></div>
+                <div class="b-dash-card__label">Einheiten</div>
+            </router-link>
+            <router-link class="b-dash-card" :to="{name: 'web.persons.index'}">
+                <div class="b-dash-card__icon"><i class="mdi mdi-account-group"></i></div>
+                <div class="b-dash-card__label">Personen</div>
+            </router-link>
+            <router-link class="b-dash-card" :to="{name: 'web.assignments.index'}">
+                <div class="b-dash-card__icon"><i class="mdi mdi-clipboard-check"></i></div>
+                <div class="b-dash-card__label">Aufgaben</div>
+            </router-link>
+            <a class="b-dash-card" href="/mietvertraege">
+                <div class="b-dash-card__icon"><i class="mdi mdi-file-document"></i></div>
+                <div class="b-dash-card__label">Mietverträge</div>
+            </a>
+            <a class="b-dash-card" href="/mietkontenblatt">
+                <div class="b-dash-card__icon"><i class="mdi mdi-cash-multiple"></i></div>
+                <div class="b-dash-card__label">Miete</div>
+            </a>
+            <a class="b-dash-card" href="/rechnungen">
+                <div class="b-dash-card__icon"><i class="mdi mdi-receipt"></i></div>
+                <div class="b-dash-card__label">Rechnungen</div>
+            </a>
+            <a class="b-dash-card" href="/buchen">
+                <div class="b-dash-card__icon"><i class="mdi mdi-book-open-variant"></i></div>
+                <div class="b-dash-card__label">Buchen</div>
+            </a>
+            <a class="b-dash-card" href="/partner">
+                <div class="b-dash-card__icon"><i class="mdi mdi-briefcase"></i></div>
+                <div class="b-dash-card__label">Partner</div>
+            </a>
+            <a class="b-dash-card" href="/kautionen">
+                <div class="b-dash-card__icon"><i class="mdi mdi-shield"></i></div>
+                <div class="b-dash-card__label">Kautionen</div>
+            </a>
+            <a class="b-dash-card" href="/sepa">
+                <div class="b-dash-card__icon"><i class="mdi mdi-bank"></i></div>
+                <div class="b-dash-card__label">SEPA</div>
+            </a>
+            <a class="b-dash-card" href="/bk">
+                <div class="b-dash-card__icon"><i class="mdi mdi-home-alert"></i></div>
+                <div class="b-dash-card__label">BK & NK</div>
+            </a>
+            <a class="b-dash-card" href="/statistik">
+                <div class="b-dash-card__icon"><i class="mdi mdi-chart-bar"></i></div>
+                <div class="b-dash-card__label">Statistik</div>
+            </a>
+        </div>
+    </v-container>
 </template>
 
 <script lang="ts">

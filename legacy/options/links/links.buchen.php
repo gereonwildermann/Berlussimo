@@ -4,7 +4,7 @@ $vorjahr = date("Y") - 1;
 ?>
 <div class="b-tools-grid">
     <div class="b-tools-group">
-        <div class="b-tools-group__header"><i class="mdi mdi-cash-register"></i> Buchen</div>
+        <div class="b-tools-group__header"><i class="mdi mdi-cash-multiple"></i> Buchen</div>
         <div class="b-tools-group__links">
             <a class="b-tool-link" href='<?php echo route('web::miete_buchen::legacy') ?>'>Miete</a>
             <a class="b-tool-link" href='<?php echo route('web::buchen::legacy', ['option' => 'zahlbetrag_buchen']) ?>'>Kosten</a>
@@ -45,7 +45,7 @@ $vorjahr = date("Y") - 1;
         </div>
     </div>
     <div class="b-tools-group">
-        <div class="b-tools-group__header"><i class="mdi mdi-chart-box"></i> Berichte</div>
+        <div class="b-tools-group__header"><i class="mdi mdi-chart-bar"></i> Berichte</div>
         <div class="b-tools-group__links">
             <a class="b-tool-link" href='<?php echo route('web::buchen::legacy', ['option' => 'monatsbericht_o_a']) ?>'>Monatsbericht o. Auszug</a>
             <a class="b-tool-link" href='<?php echo route('web::buchen::legacy', ['option' => 'monatsbericht_m_a']) ?>'>Monatsbericht m. Auszug</a>
